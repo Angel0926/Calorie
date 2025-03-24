@@ -1,0 +1,18 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13
+    container_name: calorie_tracker_db
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: calorie_tracker_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    networks:
+      - calorie_network
+networks:
+  calorie_network:
+    driver: bridge
